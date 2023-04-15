@@ -9,6 +9,7 @@ import { globalStyles } from "../styles/global";
 import { ChakraProvider, Container } from "@chakra-ui/react";
 import theme from "../styles/theme";
 import AboutMe from "../components/AboutMe";
+import Skills from "../components/Skills";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -19,6 +20,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <Hero />
         <Container maxW="container.xl" centerContent>
           <AboutMe />
+          <Skills />
         </Container>
       </ChakraProvider>
     </>

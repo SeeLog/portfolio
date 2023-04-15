@@ -1,0 +1,52 @@
+- category: Languages
+  skillList:
+    - Python
+    - TypeScript
+    - JavaScript
+    - Dart
+    - Swift
+    - Java
+    - Kotlin
+    - C
+    - C#
+    - ARM Assembly(Thumb)
+    - PHP
+    - HTML
+    - CSS
+    - SQL
+    - Delphi
+    - HCL
+
+- category: Frameworks
+  skillList:
+    - Flask
+    - React
+    - Vue
+    - Flutter
+    - Node.js
+    - Android SDK
+    - .NET
+    - Terraform
+
+- category: Tools
+  skillList:
+    - Git
+    - Docker
+    - AWS
+    - CircleCI
+    - GitHub Actions
+    - Elasticsearch
+    - Kibana
+
+- category: Cloud
+  skillList:
+    - EC2
+    - ECS Fargate
+    - ALB
+    - RDS
+    - S3
+    - CloudFront
+    - Route53
+    - CloudWatch
+    - Lambda
+    - EventBridge
