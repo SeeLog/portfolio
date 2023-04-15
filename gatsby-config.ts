@@ -22,6 +22,14 @@ const config: GatsbyConfig = {
       },
       __key: "images",
     },
+    "gatsby-transformer-yaml",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "config",
+        path: `${__dirname}/src/data`,
+      },
+    },
     {
       resolve: "@chakra-ui/gatsby-plugin",
       options: {
