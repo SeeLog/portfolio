@@ -1,0 +1,80 @@
+- year: 2010
+  contents:
+  - month: 9
+    content: 中学生の時にポケモンのROMハックがやりたくてプログラミングを学び始める。
+- year: 2012
+  contents:
+  - month: 3
+    content: 制作した Windows 向けアプリケーションがフリーソフト紹介雑誌(iP！)に掲載される。
+  - month: 3
+    content: Twitter で人工無能型のツイートをする bot (メカろぐどん) を作る。最終的にフォロワーは3万人を超えた。が、凍結した。
+  - month: 10
+    content: パズドラ向けのゲリラダンジョン時間割アプリをリリースする。
+- year: 2013
+  contents:
+  - month: 12
+    content: アプリの収益が好調だったため、受験期真っ只中に株式会社ろぐそふとを設立する。
+- year: 2014
+  contents:
+  - month: 1
+    content: 制作した Android 向けロック画面アプリ ScreenGuardian が Sony Select やギズモードなどのメディアに掲載される。
+  - month: 3
+    content: 普通に大学に落ちる。駿台名古屋校に入学する。
+  - month: 8
+    content: Twitter を使うとレベルが上がる Web サービス「ツイレベ」をリリースする。
+- year: 2015
+  contents:
+  - month: 4
+    content: 名古屋工業大学工学部情報工学科に入学する。
+- year: 2016
+  contents:
+  - month: 4
+    content: 画面の中ではなく現実世界へのフィードバックが欲しくて電子工作を始める。
+  - month: 11
+    content: 加速度センサーを利用した Wii リモコンもどきを作って遊ぶ。
+- year: 2017
+  contents:
+  - month: 12
+    content: 手袋型の楽器を制作し、GUGEN 2017 に出展する。
+- year: 2018
+  contents:
+  - month: 2
+    content: デザイン工学科の先輩の卒業制作で「色」を「音」に変換するデバイスを制作する。
+  - month: 4
+    content: 李研究室に入る。自然言語処理、対話の研究を始める。
+  - month: 8
+    content: Maker Faire Tokyo 2018 に出展する。
+  - month: 9
+    content: DSTC 7 workshop に提出する。
+  - month: 12
+    content: 寝落ち防止下敷きデバイスを制作し GUGEN 2018 に出展する。
+- year: 2019
+  contents:
+  - month: 1
+    content: AAAI 2019 workshop に参加。このサイトで使っている写真を撮る。
+  - month: 3
+    content: 名古屋工業大学工学部情報工学科を卒業する。
+  - month: 4
+    content: 名古屋工業大学大学院工学研究科情報工学専攻に入学する。
+  - month: 8
+    content: 株式会社ミクシィ(現 MIXI)で2ヶ月間のインターンシップに参加する。
+  - month: 8
+    content: YANS 2019 でポスター発表。
+- year: 2020
+  contents:
+  - month: 3
+    content: コロナ禍へ突入。研究室の自然言語処理班の班長となる。
+  - month: 5
+    content: とある企業と共同研究を行う。
+- year: 2021
+  contents:
+  - month: 3
+    content: 名古屋工業大学大学院工学研究科情報工学専攻を卒業する。
+  - month: 4
+    content: 株式会社ミクシィ(現 MIXI)に正社員として入社する。
+  - month: 5
+    content: Romi という会話 AI ロボットを作るプロダクトを作るチームでサーバーサイドエンジニアとして join する。
+- year: 0
+  contents:
+  - month: 0
+    content: 継続して MIXI の Romi チームでサーバーをはじめとしたフロント、インフラなど多岐にわたって開発を行っている。
