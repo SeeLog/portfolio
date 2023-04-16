@@ -1,5 +1,5 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import {
   Heading,
   Text,
@@ -66,29 +66,37 @@ const Works: React.FC = () => {
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6} p="30px">
         {data.works.nodes.map((work) => (
           <GridItem colSpan={1}>
-            <Card>
-              <Box width="100%">
-                <GatsbyImage
-                  image={work.image.childImageSharp.gatsbyImageData}
-                  alt={work.title}
-                />
-              </Box>
-              <CardBody px={8}>
-                <Heading as="h3" size="xl" mb={2}>
-                  {work.title}
-                </Heading>
-                <Text fontSize="xl">{work.description}</Text>
-              </CardBody>
-              <CardFooter>
-                <Box>
-                  {work.tags.map((tag) => (
-                    <Tag size="lg" m="5px" px="8px" py="4px" key={tag}>
-                      {tag}
-                    </Tag>
-                  ))}
+            <Link to={work.url}>
+              <Card
+                _hover={{
+                  boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.5)",
+                  transform: "translateY(-2px)",
+                  transition: "all 0.2s ease-in-out",
+                }}
+              >
+                <Box width="100%">
+                  <GatsbyImage
+                    image={work.image.childImageSharp.gatsbyImageData}
+                    alt={work.title}
+                  />
                 </Box>
-              </CardFooter>
-            </Card>
+                <CardBody px={8}>
+                  <Heading as="h3" size="xl" mb={2}>
+                    {work.title}
+                  </Heading>
+                  <Text fontSize="xl">{work.description}</Text>
+                </CardBody>
+                <CardFooter>
+                  <Box>
+                    {work.tags.map((tag) => (
+                      <Tag size="lg" m="5px" px="8px" py="4px" key={tag}>
+                        {tag}
+                      </Tag>
+                    ))}
+                  </Box>
+                </CardFooter>
+              </Card>
+            </Link>
           </GridItem>
         ))}
       </SimpleGrid>
