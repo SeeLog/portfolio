@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import { BsThreeDotsVertical } from "react-icons/bs";
 
 const headerLinks = [
   { name: "About", href: "#about" },
@@ -91,9 +90,7 @@ const Header: React.FC = () => {
         {isMobile && (
           <Popover>
             <PopoverTrigger>
-              <Button size="lg">
-                <BsThreeDotsVertical />
-              </Button>
+              <Button size="lg">Menu</Button>
             </PopoverTrigger>
             <PopoverContent>
               <PopoverArrow />
