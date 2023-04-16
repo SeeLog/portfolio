@@ -1,5 +1,5 @@
 import React from "react";
-import { Center, Flex, Heading, Stack, useColorMode } from "@chakra-ui/react";
+import { Center, Flex, Heading, Stack, useBreakpointValue, useColorMode } from "@chakra-ui/react";
 import { StaticImage } from "gatsby-plugin-image";
 
 const Hero = () => {
@@ -8,35 +8,7 @@ const Hero = () => {
   return (
     <Stack minH={"100vh"} minW="100wh" direction={{ base: "row" }}>
       <Flex p={8} flex={1} align={"center"} justify={"center"}>
-        <Stack spacing={6} w={"full"}>
-          <Center>
-            <StaticImage
-              src="../images/icon.png"
-              alt="icon"
-              objectFit="cover"
-              style={{
-                borderRadius: "50%",
-              }}
-            />
-          </Center>
-          <Center>
-            <Heading
-              fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
-              lineHeight={"110%"}
-            >
-              ろぐみ
-            </Heading>
-          </Center>
-          <Center>
-            <Heading
-              fontSize={{ base: "xl", sm: "2xl", md: "5xl" }}
-              fontWeight={400}
-              lineHeight={"110%"}
-            >
-              SeeLog
-            </Heading>
-          </Center>
-        </Stack>
+        <IconAndName />
       </Flex>
       <Flex flex={2}>
         {colorMode === "light" ? (
@@ -53,6 +25,40 @@ const Hero = () => {
           />
         )}
       </Flex>
+    </Stack>
+  );
+};
+
+const IconAndName = () => {
+  return (
+    <Stack spacing={6} w={"full"}>
+      <Center>
+        <StaticImage
+          src="../images/icon.png"
+          alt="icon"
+          objectFit="cover"
+          style={{
+            borderRadius: "50%",
+          }}
+        />
+      </Center>
+      <Center>
+        <Heading
+          fontSize={{ base: "2xl", sm: "3xl", md: "4xl", xl: "6xl" }}
+          lineHeight={"110%"}
+        >
+          ろぐみ
+        </Heading>
+      </Center>
+      <Center>
+        <Heading
+          fontSize={{ base: "xl", sm: "2xl", md: "3xl", xl: "4xl" }}
+          fontWeight={400}
+          lineHeight={"110%"}
+        >
+          SeeLog
+        </Heading>
+      </Center>
     </Stack>
   );
 };
