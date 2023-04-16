@@ -7,6 +7,9 @@ const theme = {
     initialColorMode: "light",
     useSystemColorMode: false,
   },
+  colors: {
+    ...defaultTheme.colors,
+  },
   fonts: {
     ...defaultTheme.fonts,
     heading: '"Roboto", "Noto Sans JP", sans-serif',

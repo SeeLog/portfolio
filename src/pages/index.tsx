@@ -13,6 +13,7 @@ import Skills from "../components/Skills";
 import Timeline from "../components/Timeline";
 import Works from "../components/Works";
 import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -28,6 +29,7 @@ const IndexPage: React.FC<PageProps> = () => {
           <Works />
           <Contact />
         </Container>
+        <Footer />
       </ChakraProvider>
     </>
   );

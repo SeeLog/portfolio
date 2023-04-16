@@ -1,7 +1,6 @@
 import React from "react";
 import { Divider, Heading, Button, Icon, Stack } from "@chakra-ui/react";
-import { SiZenn, SiQiita } from "react-icons/si";
-import { FaGithub, FaTwitter } from "react-icons/fa";
+import { SiZenn, SiQiita, SiDiscord, SiGithub, SiTwitter } from "react-icons/si";
 
 const Contact = () => {
   return (
@@ -17,7 +16,7 @@ const Contact = () => {
           target="_blank"
           size="lg"
         >
-          <Icon as={FaGithub} boxSize="6" />
+          <Icon as={SiGithub} boxSize="8" />
         </Button>
         <Button
           as="a"
@@ -25,10 +24,18 @@ const Contact = () => {
           target="_blank"
           size="lg"
         >
-          <Icon as={SiQiita} boxSize="6" />
+          <Icon as={SiQiita} boxSize="16" />
         </Button>
         <Button as="a" href="https://zenn.dev/seelog" target="_blank" size="lg">
-          <Icon as={SiZenn} boxSize="6" />
+          <Icon as={SiZenn} boxSize="8" />
+        </Button>
+        <Button
+          as="a"
+          href="https://discordapp.com/users/317944412028010497"
+          target="_blank"
+          size="lg"
+        >
+          <Icon as={SiDiscord} boxSize="8" />
         </Button>
         <Button
           as="a"
@@ -36,7 +43,7 @@ const Contact = () => {
           target="_blank"
           size="lg"
         >
-          <Icon as={FaTwitter} boxSize="6" />
+          <Icon as={SiTwitter} boxSize="8" />
         </Button>
       </Stack>
     </>
