@@ -6,7 +6,7 @@ export const globalStyles = css`
   }
 
   * {
-    font-family: "Roboto", "Noto Sans JP", sans-serif !important;
+    font-family: "Roboto", "Noto Sans JP", sans-serif;
   }
 
   .rotate {

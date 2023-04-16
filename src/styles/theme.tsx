@@ -11,9 +11,9 @@ const theme = {
   },
   fonts: {
     ...defaultTheme.fonts,
-    heading: '"Roboto", "Noto Sans JP", sans-serif',
-    body: '"Roboto", "Noto Sans JP", sans-serif',
-    title: '"DynaPuff", cursive',
+    heading: '"Roboto", "Noto Sans JP", sans-serif !important',
+    body: '"Roboto", "Noto Sans JP", sans-serif !important',
+    title: '"DynaPuff", cursive !important',
   }
 };
 
