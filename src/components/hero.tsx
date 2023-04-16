@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Center,
-  Flex,
-  Heading,
-  Stack,
-  Text,
-  useColorMode,
-} from "@chakra-ui/react";
+import { Center, Flex, Heading, Stack, useColorMode } from "@chakra-ui/react";
 import { StaticImage } from "gatsby-plugin-image";
 
 const Hero = () => {
@@ -21,6 +13,7 @@ const Hero = () => {
             <StaticImage
               src="../images/icon.png"
               alt="icon"
+              objectFit="cover"
               style={{
                 borderRadius: "50%",
               }}
