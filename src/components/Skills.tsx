@@ -27,7 +27,7 @@ const Skills: React.FC = () => {
 
   return (
     <>
-      <Divider my={10} />
+      <Divider py={10} id="skills" />
       <Heading as="h2" size="2xl" p="30px">
         Skills
       </Heading>

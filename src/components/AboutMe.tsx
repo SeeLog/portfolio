@@ -1,10 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import {
-  Divider,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
+import { Divider, Heading, Text } from "@chakra-ui/react";
 
 interface AboutMeData {
   aboutMe: {
@@ -29,7 +25,7 @@ const AboutMe: React.FC = () => {
 
   return (
     <>
-      <Divider my={10} />
+      <Divider py={10} id="about" />
       <Heading as="h2" size="2xl" p="30px">
         About Me
       </Heading>

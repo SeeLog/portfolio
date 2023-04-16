@@ -9,8 +9,8 @@ import {
 } from "@chakra-ui/react";
 import TimelineItem from "./TimelineItem";
 
-interface CareerData {
-  careers: {
+interface TimelineData {
+  timeline: {
     nodes: {
       year: number;
       contents: {
@@ -22,8 +22,8 @@ interface CareerData {
 }
 
 const query = graphql`
-  query careerQuery {
-    careers: allCareersYaml {
+  query timelineQuery {
+    timeline: allTimelineYaml {
       nodes {
         year
         contents {
@@ -35,24 +35,24 @@ const query = graphql`
   }
 `;
 
-const Careers: React.FC = () => {
-  const data = useStaticQuery<CareerData>(query);
+const Timeline: React.FC = () => {
+  const data = useStaticQuery<TimelineData>(query);
   let timelineCount = 0;
 
   return (
     <>
-      <Divider my={10} />
+      <Divider py={10} id="timeline" />
       <Heading as="h2" size="2xl" p="30px">
-        Career
+        Timeline
       </Heading>
-      {data.careers.nodes.map((career) => (
+      {data.timeline.nodes.map((timeline) => (
         <>
           <Heading as="h3" size="xl" color="blue.400" my="10">
-            {career.year !== 0 && career.year}
-            {career.year === 0 && "Now"}
+            {timeline.year !== 0 && timeline.year}
+            {timeline.year === 0 && "Now"}
           </Heading>
-          {career.year !== 0 &&
-            career.contents.map((content) => (
+          {timeline.year !== 0 &&
+            timeline.contents.map((content) => (
               <TimelineItem
                 key={content.month.toString()}
                 month={content.month.toString()}
@@ -60,13 +60,13 @@ const Careers: React.FC = () => {
                 isLeft={timelineCount++ % 2 === 0}
               />
             ))}
-          {career.year === 0 && (
+          {timeline.year === 0 && (
             <Box
               p={{ base: 3, sm: 6 }}
               rounded="lg"
               bg={useColorModeValue("orange.100", "purple.900")}
             >
-              {career.contents.map((content) => (
+              {timeline.contents.map((content) => (
                 <Text fontSize="xl">{content.content}</Text>
               ))}
             </Box>
@@ -77,4 +77,4 @@ const Careers: React.FC = () => {
   );
 };
 
-export default Careers;
+export default Timeline;

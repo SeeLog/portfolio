@@ -94,6 +94,25 @@
   - Python
   - 電子工作
 
+- title: Python init Generator
+  description: Python の __init__.py を自動生成するツール。Python のパッケージを作るときに便利です。
+  url: https://marketplace.visualstudio.com/items?itemName=SeeLog.python-init-generator
+  image: ./images/works/vscode.png
+  tags:
+  - Visual Studio Code
+  - TypeScript
+  - Node.js
+
+- title: PersonaChatbotApp
+  description: 大学院での研究の一環として作成した、キャラクター性のあるチャットボットと対話ができる Web アプリ。
+  url: https://github.com/SeeLog/PersonaChatbotApp
+  image: ./images/works/no_image.png
+  tags:
+  - Web
+  - Python
+  - Flask
+  - PyTorch
+
 - title: レンチン電卓
   description: 電子レンジのワット数と温め時間を変換することができるスマホアプリ。iOS/Android 両対応です。
   url: https://apps.apple.com/jp/app/%E3%83%AC%E3%83%B3%E3%83%81%E3%83%B3%E9%9B%BB%E5%8D%93/id1577913598
@@ -113,3 +132,25 @@
   - Android
   - Flutter
   - Riverpod
+
+- title: Commando
+  description: VS Code 上から爆速でコマンドを実行できる拡張機能。出力を output channel に表示することができたりするのが特徴。
+  url: https://marketplace.visualstudio.com/items?itemName=seelog.commando
+  image: ./images/works/commando.png
+  tags:
+  - VS Code
+  - TypeScript
+  - Node.js
+
+- title: このポートフォリオ
+  description: このサイトは Gatsby で作られています。謎にダークモード対応。
+  url: https://seelog.me
+  image: ./images/works/icon.png
+  tags:
+  - Web
+  - React
+  - Gatsby
+  - TypeScript
+  - Chakra UI
+  - GraphQL
+  - AWS

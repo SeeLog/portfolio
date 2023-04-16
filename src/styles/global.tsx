@@ -4,7 +4,16 @@ export const globalStyles = css`
   body {
     margin: 0;
   }
+
   * {
     font-family: "Roboto", "Noto Sans JP", sans-serif !important;
+  }
+
+  .rotate {
+    transform: rotate(180deg) !important;
+  }
+
+  hr {
+    border-color: goldenrod !important;
   }
 `;

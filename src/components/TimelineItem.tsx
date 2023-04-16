@@ -94,6 +94,10 @@ const Card = (props: CardProps) => {
         right: rightValue,
         display: "block",
       }}
+      _hover={{
+        filter: `drop-shadow(0px 0px 10px rgba(${useColorModeValue("0, 0, 0", "255, 255, 255")}, 0.5))`,
+        transition: "all 0.3s ease-in-out",
+      }}
     >
       <Box>
         <Text fontSize="2xl" fontWeight="bold" color={props.isLeft ? "teal.400" : "blue.400"}>
@@ -137,7 +141,7 @@ const LineWithDot = () => {
           backgroundSize="cover"
           backgroundRepeat="no-repeat"
           backgroundPosition="center center"
-          bg={useColorModeValue("orange.400", "purple.400")}
+          bg={useColorModeValue("orange.400", "purple.500")}
           borderRadius="100px"
           backgroundImage="none"
           opacity={1}

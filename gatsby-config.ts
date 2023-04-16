@@ -19,6 +19,7 @@ const config: GatsbyConfig = {
         path: `${__dirname}/src/data`,
       },
     },
+    "gatsby-plugin-smoothscroll",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",

@@ -11,6 +11,7 @@ import {
   Tag,
   CardFooter,
   CardBody,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { IGatsbyImageData, GatsbyImage } from "gatsby-plugin-image";
 
@@ -58,7 +59,7 @@ const Works: React.FC = () => {
 
   return (
     <>
-      <Divider my={10} />
+      <Divider py={10} id="works" />
       <Heading as="h2" size="2xl" p="30px">
         Works
       </Heading>
@@ -69,7 +70,10 @@ const Works: React.FC = () => {
             <Link to={work.url}>
               <Card
                 _hover={{
-                  boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.5)",
+                  boxShadow: `0 0 10px 2px rgba(${useColorModeValue(
+                    "0, 0, 0",
+                    "255, 255, 255"
+                  )}, 0.5)`,
                   transform: "translateY(-2px)",
                   transition: "all 0.2s ease-in-out",
                 }}

@@ -10,8 +10,9 @@ import { ChakraProvider, Container } from "@chakra-ui/react";
 import theme from "../styles/theme";
 import AboutMe from "../components/AboutMe";
 import Skills from "../components/Skills";
-import Careers from "../components/Career";
+import Timeline from "../components/Timeline";
 import Works from "../components/Works";
+import Contact from "../components/Contact";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -23,8 +24,9 @@ const IndexPage: React.FC<PageProps> = () => {
         <Container maxW="8xl" centerContent>
           <AboutMe />
           <Skills />
-          <Careers />
+          <Timeline />
           <Works />
+          <Contact />
         </Container>
       </ChakraProvider>
     </>
