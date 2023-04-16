@@ -15,7 +15,6 @@
     - CSS
     - SQL
     - Delphi
-    - HCL
 
 - category: Frameworks
   skillList:
@@ -26,7 +25,6 @@
     - Node.js
     - Android SDK
     - .NET
-    - Terraform
 
 - category: Tools
   skillList:
@@ -37,6 +35,7 @@
     - GitHub Actions
     - Elasticsearch
     - Kibana
+    - Terraform
 
 - category: Cloud
   skillList:
