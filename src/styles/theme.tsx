@@ -1,4 +1,3 @@
-import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 import { extendTheme } from "@chakra-ui/react";
 import { theme as defaultTheme } from "@chakra-ui/react";
 
@@ -14,6 +13,7 @@ const theme = {
     ...defaultTheme.fonts,
     heading: '"Roboto", "Noto Sans JP", sans-serif',
     body: '"Roboto", "Noto Sans JP", sans-serif',
+    title: '"DynaPuff", cursive',
   }
 };
 

@@ -66,6 +66,7 @@ const Header: React.FC = () => {
         >
           <Link
             onClick={() => scrollTo("#hero", "start")}
+            fontFamily="title"
             _hover={{
               textDecoration: "none",
             }}

@@ -2,6 +2,7 @@ import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import "@fontsource/noto-sans-jp";
 import "@fontsource/roboto";
+import "@fontsource/dynapuff";
 import { Global } from "@emotion/react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";

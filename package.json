@@ -21,6 +21,7 @@
     "@chakra-ui/react": "^2.5.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@fontsource/dynapuff": "^4.5.4",
     "@fontsource/noto-sans-jp": "^4.5.12",
     "@fontsource/roboto": "^4.5.8",
     "framer-motion": "^10.11.6",
