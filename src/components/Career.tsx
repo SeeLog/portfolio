@@ -4,9 +4,6 @@ import {
   Divider,
   Heading,
   Text,
-  Grid,
-  GridItem,
-  Tag,
   Box,
   useColorModeValue,
 } from "@chakra-ui/react";

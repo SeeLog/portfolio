@@ -11,17 +11,6 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [
     "gatsby-plugin-emotion",
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "images",
-        path: "./src/images/",
-      },
-      __key: "images",
-    },
     "gatsby-transformer-yaml",
     {
       resolve: "gatsby-source-filesystem",
@@ -29,6 +18,17 @@ const config: GatsbyConfig = {
         name: "config",
         path: `${__dirname}/src/data`,
       },
+    },
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: `${__dirname}/src/images`,
+      },
+      __key: "images",
     },
     {
       resolve: "@chakra-ui/gatsby-plugin",

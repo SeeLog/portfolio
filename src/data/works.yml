@@ -1,0 +1,115 @@
+- title: ColorGetter
+  description: Windows 向けのスポイトツール。5bits カラーにも対応しているのが特徴。今はもうメンテナンスしてません。
+  url: https://www.vector.co.jp/soft/winnt/art/se483894.html
+  image: ./images/works/colorgetter.png
+  tags:
+  - Windows
+  - C#
+  - .NET
+
+- title: ClipImagePlus
+  description: Windows 向けのクリップボードから画像をいい感じに作るツール。今はもうメンテナンスしてません。今であれば Snipping Tool で十分だと思います。
+  url: https://www.vector.co.jp/soft/winnt/art/se491954.html
+  image: ./images/works/clipimageplus.jpg
+  tags:
+  - Windows
+  - C#
+  - .NET
+
+- title: URLShorter
+  description: Windows 向けの URL 短縮、復元ツール。iP という雑誌に掲載 & 同梱された。Shorter じゃなくて shortener とかが正しい気もする。
+  url: https://www.vector.co.jp/soft/winnt/net/se495238.html
+  image: ./images/works/urlshorter.jpg
+  tags:
+  - Windows
+  - C#
+  - .NET
+
+- title: ScripTEditor
+  description: Windows 向けのポケモン ROM 改造ツール。イベントのスクリプトを独自の言語を用いて編集できます。今はもうメンテナンスしてません。
+  url: http://seelog.nobody.jp/Pokemon_Hack/SoftWare/ScripTEditor.html
+  image : ./images/works/STE.png
+  tags:
+  - Windows
+  - Delphi
+
+- title: メカろぐどん(@Mecha_Log)
+  description: 某ゲームのメカドンっぽいやつをモチーフにした人工無能型の bot です。3万フォロワーくらいいましたが、残念ながら凍結されました。
+  url: https://togetter.com/li/439247
+  image: ./images/works/mecha_log.png
+  tags:
+  - Windows
+  - PHP
+  - C#
+  - MySQL
+  - .NET
+
+- title: ゲリラダンジョン時間割ツール
+  description: Android 向けパズドラのゲリラダンジョンの時間割を確認できる攻略アプリ。必要なダンジョンだけ自動で通知させる機能付き。100万以上ダウンロードされ、起業するキッカケになった。残念ながら現在はクローズ。
+  url: ""
+  image: ./images/works/pad_time_table.jpg
+  tags:
+  - Android
+  - Java
+
+- title: ScreenGuardian
+  description: Android 向けのロック画面アプリ。昔の Android は iOS みたいにロック画面とホーム画面の画像を別々に設定できなかった。あとロック画面がダサかったのでかっこよくするためのアプリ。Sony Select に掲載されたり、ギズモードに取り上げられたりもした。現在は Android の発展とともにクローズ済み。
+  url: https://www.gizmodo.jp/2013/12/screenguardian.html
+  image: ./images/works/screen_guardian.png
+  tags:
+  - Android
+  - Java
+
+- title: ツイレベ
+  description: Twitter を利用状況を元にレベルを計算したりバトルしたりできる Web サービス。今はもうクローズしています。
+  url: ""
+  image: ./images/works/twileve.png
+  tags:
+  - Web
+  - PHP
+  - MySQL
+  - Twitter
+
+- title: Take Five!
+  description: 「ハイタッチをした時に音が鳴ったら面白そう」という小さなアイデアを具現化し、それによって生まれるコミュニケーションの活発化を目的とした手袋型コミュニケーションデバイス。手袋型の楽器です。
+  url: https://gugen.jp/subscriptions/work/571
+  image: ./images/works/take_five.jpg
+  tags:
+  - Arduino
+  - XBee
+  - C++
+  - Raspberry Pi
+  - Python
+  - 電子工作
+
+- title: DORMIR 〜寝落ち検出デバイス〜
+  description: DORMIR (ドルミール) は下敷き型の「寝落ち」検出デバイスです。下敷き上の「寝落ち」を検出し、無線通信で外部機器と通信を行います。
+  url: https://gugen.jp/subscriptions/work/695
+  image: ./images/works/dormir.jpg
+  tags:
+  - Arduino
+  - BLE
+  - C++
+  - Raspberry Pi
+  - Python
+  - 電子工作
+
+- title: レンチン電卓
+  description: 電子レンジのワット数と温め時間を変換することができるスマホアプリ。iOS/Android 両対応です。
+  url: https://apps.apple.com/jp/app/%E3%83%AC%E3%83%B3%E3%83%81%E3%83%B3%E9%9B%BB%E5%8D%93/id1577913598
+  image: ./images/works/microwave.png
+  tags:
+  - iOS
+  - Android
+  - Flutter
+  - Provider
+
+- title: 個体値チェッカー
+  description: ポケモンの個体値を計算するスマホアプリ。SV 対応済み。iOS/Android 両対応です。
+  url: https://apps.apple.com/jp/app/%E5%80%8B%E4%BD%93%E5%80%A4%E3%83%81%E3%82%A7%E3%83%83%E3%82%AB%E3%83%BC-for-sv/id1579231487
+  image: ./images/works/iv_checker.png
+  tags:
+  - iOS
+  - Android
+  - Flutter
+  - Riverpod

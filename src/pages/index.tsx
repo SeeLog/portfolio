@@ -11,6 +11,7 @@ import theme from "../styles/theme";
 import AboutMe from "../components/AboutMe";
 import Skills from "../components/Skills";
 import Careers from "../components/Career";
+import Works from "../components/Works";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -19,10 +20,11 @@ const IndexPage: React.FC<PageProps> = () => {
       <ChakraProvider theme={theme}>
         <Header />
         <Hero />
-        <Container maxW="container.xl" centerContent>
+        <Container maxW="8xl" centerContent>
           <AboutMe />
           <Skills />
           <Careers />
+          <Works />
         </Container>
       </ChakraProvider>
     </>
