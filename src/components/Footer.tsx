@@ -7,7 +7,7 @@ const Footer = () => {
       <Divider py={10} />
       <Center py={10}>
         <Text fontSize="lg">
-          © 2010 - 2023 <Link href="https://github.com/SeeLog">SeeLog</Link>
+          © 2010 - 2023 <Link href="https://github.com/SeeLog">SeeLog</Link> All Rights Reserved.
         </Text>
       </Center>
     </>
