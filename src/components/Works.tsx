@@ -17,18 +17,20 @@ import { IGatsbyImageData, GatsbyImage } from "gatsby-plugin-image";
 
 interface WorksData {
   works: {
-    nodes: {
-      title: string;
-      description: string;
-      url: string;
-      image: {
-        childImageSharp: {
-          gatsbyImageData: IGatsbyImageData;
-        };
-      };
-      tags: string[];
-    }[];
+    nodes: Work[];
   };
+}
+
+interface Work {
+  title: string;
+  description: string;
+  url: string;
+  image: {
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData;
+    };
+  };
+  tags: string[];
 }
 
 const query = graphql`
@@ -67,44 +69,58 @@ const Works: React.FC = () => {
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6} p="30px">
         {data.works.nodes.map((work) => (
           <GridItem colSpan={1}>
-            <Link to={work.url}>
-              <Card
-                _hover={{
-                  boxShadow: `0 0 10px 2px rgba(${useColorModeValue(
-                    "0, 0, 0",
-                    "255, 255, 255"
-                  )}, 0.5)`,
-                  transform: "translateY(-2px)",
-                  transition: "all 0.2s ease-in-out",
-                }}
-              >
-                <Box width="100%">
-                  <GatsbyImage
-                    image={work.image.childImageSharp.gatsbyImageData}
-                    alt={work.title}
-                  />
-                </Box>
-                <CardBody px={8}>
-                  <Heading as="h3" size="xl" mb={2}>
-                    {work.title}
-                  </Heading>
-                  <Text fontSize="xl">{work.description}</Text>
-                </CardBody>
-                <CardFooter>
-                  <Box>
-                    {work.tags.map((tag) => (
-                      <Tag size="lg" m="5px" px="8px" py="4px" key={tag}>
-                        {tag}
-                      </Tag>
-                    ))}
-                  </Box>
-                </CardFooter>
-              </Card>
-            </Link>
+            {work.url !== "" ? (
+              <Link to={work.url} target="_blank">
+                <WorkCard work={work} />
+              </Link>
+            ) : (
+              <WorkCard work={work} />
+            )}
           </GridItem>
         ))}
       </SimpleGrid>
     </>
+  );
+};
+
+interface WorkCardProps {
+  work: Work;
+}
+
+const WorkCard: React.FC<WorkCardProps> = (props: WorkCardProps) => {
+  return (
+    <Card
+      _hover={{
+        boxShadow: `0 0 10px 2px rgba(${useColorModeValue(
+          "0, 0, 0",
+          "255, 255, 255"
+        )}, 0.5)`,
+        transform: "translateY(-2px)",
+        transition: "all 0.2s ease-in-out",
+      }}
+    >
+      <Box width="100%">
+        <GatsbyImage
+          image={props.work.image.childImageSharp.gatsbyImageData}
+          alt={props.work.title}
+        />
+      </Box>
+      <CardBody px={8}>
+        <Heading as="h3" size="xl" mb={2}>
+          {props.work.title}
+        </Heading>
+        <Text fontSize="xl">{props.work.description}</Text>
+      </CardBody>
+      <CardFooter>
+        <Box>
+          {props.work.tags.map((tag) => (
+            <Tag size="lg" m="5px" px="8px" py="4px" key={tag}>
+              {tag}
+            </Tag>
+          ))}
+        </Box>
+      </CardFooter>
+    </Card>
   );
 };
 
