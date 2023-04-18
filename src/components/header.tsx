@@ -1,21 +1,18 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
+import scrollTo from "gatsby-plugin-smoothscroll";
+import ColorModeContext from "../context/ColorModeContext";
 import {
   Box,
+  AppBar,
+  Toolbar,
   Button,
-  Flex,
-  Link,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-  Stack,
-  useBreakpointValue,
-  useColorMode,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import scrollTo from "gatsby-plugin-smoothscroll";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+  IconButton,
+  Menu,
+  MenuItem,
+  Typography,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { DarkMode, LightMode } from "@mui/icons-material";
 
 const headerLinks = [
   { name: "About", href: "#about" },
@@ -26,8 +23,8 @@ const headerLinks = [
 ];
 
 const Header: React.FC = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const { colorMode, toggleColorMode, getColorWithMode } =
+    useContext(ColorModeContext);
 
   const toggle = useCallback(() => {
     toggleColorMode();
@@ -42,86 +39,139 @@ const Header: React.FC = () => {
     }, 300);
   }, [toggleColorMode]);
 
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [menuOpen, setMenuOpen] = React.useState(false);
+
+  const handleOpenNavMenu = useCallback(
+    (event: React.MouseEvent<HTMLElement>) => {
+      setAnchorEl(event.currentTarget);
+      setMenuOpen(true);
+    },
+    []
+  );
+  const handleMenuItemClick = useCallback(
+    (event: React.MouseEvent<HTMLElement>, scrollTarget: string) => {
+      // keep scrolling after menu closed
+      setTimeout(() => {
+        scrollTo(scrollTarget, "start");
+      }, 0);
+      setMenuOpen(false);
+    },
+    []
+  );
+
   return (
-    <Box
-      bg={useColorModeValue("blackAlpha.600", "whiteAlpha.400")}
-      backdropFilter="auto"
-      backdropBlur="4px"
-      px={4}
-      position="fixed"
-      as="header"
-      w="100%"
-      zIndex={100}
-    >
-      <Flex h="24" alignItems="center" justifyContent="space-between">
-        <Box
-          color={colorMode === "light" ? "white" : "white"}
-          as="h1"
-          fontSize="3xl"
-          _hover={{
-            transform: "scale(1.1)",
-            transition: "all 0.3s ease-in-out",
-            filter: "drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5))",
-          }}
-        >
-          <Link
-            onClick={() => scrollTo("#hero", "start")}
-            fontFamily="title"
-            _hover={{
-              textDecoration: "none",
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar
+        sx={{
+          backgroundColor: getColorWithMode(
+            "rgba(0, 0, 0, 0.5)",
+            "rgba(255, 255, 255, 0.2)"
+          ),
+        }}
+      >
+        <Toolbar disableGutters>
+          {
+            // 狭い画面ではハンバーガーメニューを表示
+          }
+          <Box sx={{ display: { xs: "flex", md: "none" }, flexGrow: 1 }}>
+            <IconButton
+              size="large"
+              aria-label="Menu"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              color="inherit"
+              onClick={handleOpenNavMenu}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={menuOpen}
+              onClose={() => setMenuOpen(false)}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
+            >
+              {headerLinks.map((link) => (
+                <MenuItem
+                  onClick={async (event) => {
+                    handleMenuItemClick(event, link.href);
+                  }}
+                  key={link.name}
+                >
+                  <Typography>{link.name}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          <Box
+            sx={{
+              pl: 2,
+              flexGrow: {
+                xs: 1,
+                md: 1,
+              },
             }}
           >
-            seelog.me
-          </Link>
-        </Box>
-        {!isMobile && (
-          <Stack direction="row">
+            <Typography
+              component="a"
+              variant="h5"
+              fontFamily="dynapuff"
+              onClick={() => scrollTo("#hero", "start")}
+              sx={{
+                display: "inline-block",
+                cursor: "pointer",
+                ":hover": {
+                  transform: "scale(1.1)",
+                  transition: "all 0.3s ease-in-out",
+                  filter: "drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5))",
+                },
+              }}
+            >
+              seelog.me
+            </Typography>
+          </Box>
+
+          {
+            // でかい画面ではヘッダーリンクを表示
+          }
+          <Box
+            display={{ xs: "none", md: "flex" }}
+            sx={{
+              flexGrow: 1,
+            }}
+          >
             {headerLinks.map((link) => (
               <Button
-                as="a"
-                fontSize="xl"
-                onClick={() => scrollTo(link.href, "start")}
+                color="inherit"
+                onClick={() => {
+                  scrollTo(link.href, "start");
+                }}
                 key={link.name}
               >
                 {link.name}
               </Button>
             ))}
-          </Stack>
-        )}
-        {isMobile && (
-          <Popover>
-            <PopoverTrigger>
-              <Button size="lg">Menu</Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverArrow />
-              <PopoverBody>
-                <Stack direction="column">
-                  {headerLinks.map((link) => (
-                    <Button
-                      as="a"
-                      fontSize="xl"
-                      onClick={() => scrollTo(link.href, "start")}
-                      key={link.name}
-                    >
-                      {link.name}
-                    </Button>
-                  ))}
-                </Stack>
-              </PopoverBody>
-            </PopoverContent>
-          </Popover>
-        )}
-        <Stack direction="row">
-          <Button onClick={toggle} size="lg">
-            {colorMode === "light" ? (
-              <MoonIcon boxSize="6" />
-            ) : (
-              <SunIcon boxSize="6" />
-            )}
-          </Button>
-        </Stack>
-      </Flex>
+          </Box>
+
+          <Box>
+            <Button onClick={toggle} color="inherit">
+              {colorMode === "light" ? <DarkMode /> : <LightMode />}
+            </Button>
+          </Box>
+        </Toolbar>
+      </AppBar>
     </Box>
   );
 };
