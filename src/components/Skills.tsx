@@ -1,6 +1,10 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { Divider, Heading, Text, Grid, GridItem, Tag } from "@chakra-ui/react";
+import { Grid, Typography, Chip, Box, Slide } from "@mui/material";
+import SectionDivider from "./SectionDivider";
+import SectionHeader from "./SectionHeader";
+import SectionBox from "./SectionBox";
+import SkillsRow from "./SkillsRow";
 
 interface SkillsData {
   skills: {
@@ -26,42 +30,31 @@ const Skills: React.FC = () => {
   const data = useStaticQuery<SkillsData>(query);
 
   return (
-    <>
-      <Divider py={10} id="skills" />
-      <Heading as="h2" size="2xl" p="30px">
-        Skills
-      </Heading>
-      {data.skills.nodes.map((skill) => (
+    <SectionBox>
+      <SectionDivider
+        id="skills"
+        sx={{
+          width: "80%",
+          marginX: "auto",
+        }}
+      />
+      <SectionHeader variant="h2">Skills</SectionHeader>
+      <Box width="100%">
         <Grid
-          templateColumns="repeat(2, 1fr)"
-          gap={6}
-          p="30px"
-          textAlign="left"
+          container
+          spacing={8}
+          sx={{
+            textAlign: "left",
+            maxWidth: "80%",
+            margin: "0 auto",
+          }}
         >
-          <GridItem colSpan={1}>
-            <Heading as="h3" size="xl">
-              {skill.category}
-            </Heading>
-          </GridItem>
-          <GridItem colSpan={1}>
-            {skill.skillList.map((skill) => (
-              <Tag
-                fontSize="2xl"
-                size="lg"
-                m="5px"
-                px="8px"
-                py="4px"
-                variant="outline"
-                colorScheme="orange"
-                key={skill}
-              >
-                {skill}
-              </Tag>
-            ))}
-          </GridItem>
+          {data.skills.nodes.map((skill) => (
+            <SkillsRow category={skill.category} skillList={skill.skillList} />
+          ))}
         </Grid>
-      ))}
-    </>
+      </Box>
+    </SectionBox>
   );
 };
 
