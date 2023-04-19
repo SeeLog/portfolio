@@ -1,15 +1,18 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import {
-  Divider,
-  Heading,
-  Text,
-  Box,
-  useColorModeValue,
-  useBreakpointValue,
-  chakra,
-} from "@chakra-ui/react";
-import TimelineItem from "./TimelineItem";
+  Timeline as MuiTimeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot,
+  TimelineOppositeContent,
+} from "@mui/lab";
+import SectionDivider from "./SectionDivider";
+import SectionHeader from "./SectionHeader";
+import SectionBox from "./SectionBox";
+import { Paper, useTheme } from "@mui/material";
 
 interface TimelineData {
   timeline: {
@@ -37,68 +40,102 @@ const query = graphql`
   }
 `;
 
+const colorList = [
+  "secondary",
+  "success",
+  "info",
+  "warning",
+  "error",
+] as const;
+
 const Timeline: React.FC = () => {
+  const theme = useTheme();
   const data = useStaticQuery<TimelineData>(query);
-  const isMobile = useBreakpointValue({ base: true, md: false });
-  let timelineCount = 0;
+  let contentCount = 0;
 
   return (
-    <>
-      <Divider py={10} id="timeline" />
-      <Heading as="h2" size="2xl" p="30px">
-        Timeline
-      </Heading>
-      {data.timeline.nodes.map((timeline) => (
-        <>
-          <Box position="relative" w="100%">
-            {isMobile && (
-              <chakra.span
-                position="absolute"
-                left="10px"
-                height="100%"
-                border="1px solid"
-                borderColor={useColorModeValue("gray.200", "gray.600")}
-                top="0px"
-              ></chakra.span>
-            )}
-            <Heading
-              as="h3"
-              size="xl"
-              color="blue.400"
-              my="10"
-              textAlign={"center"}
-            >
-              {timeline.year !== 0 && timeline.year}
-              {timeline.year === 0 && "Now"}
-            </Heading>
-          </Box>
-          {timeline.year !== 0 &&
-            timeline.contents.map((content) => (
+    <SectionBox>
+      <SectionDivider id="timeline" />
+      <SectionHeader variant="h2">Timeline</SectionHeader>
+      <MuiTimeline position="alternate">
+        {data.timeline.nodes.slice(0, -1).map((timeline) => (
+          <>
+            <TimelineItem>
+              <TimelineSeparator>
+                <SectionHeader variant="h3">{timeline.year}</SectionHeader>
+                <TimelineConnector />
+              </TimelineSeparator>
+              <TimelineContent></TimelineContent>
+            </TimelineItem>
+            {
+              // This is a hack to make the timeline look better
+            }
+            <TimelineItem
+              sx={{
+                display: "none",
+              }}
+            />
+            {timeline.contents.map((content) => (
               <TimelineItem
-                key={content.month.toString()}
-                month={content.month.toString()}
-                content={content.content}
-                isLeft={timelineCount++ % 2 === 0}
-              />
+                sx={{
+                  width: "80%",
+                  marginX: "auto",
+                }}
+              >
+                <TimelineOppositeContent
+                  sx={{
+                    margin: "auto 0",
+                  }}
+                >
+                  <SectionHeader variant="h4">{content.month}月</SectionHeader>
+                </TimelineOppositeContent>
+                <TimelineSeparator>
+                  <TimelineConnector />
+                  <TimelineDot
+                    color={colorList[contentCount % colorList.length]}
+                  />
+                  <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent>
+                  <Paper
+                    elevation={3}
+                    sx={{
+                      padding: "2rem",
+                      textAlign: "left",
+                      borderBottomWidth: "0.5rem",
+                      borderBottomColor:
+                        theme.palette[
+                          colorList[contentCount % colorList.length]
+                        ].main,
+                    }}
+                  >
+                    {content.content}
+                  </Paper>
+                </TimelineContent>
+                {contentCount++ ? undefined : undefined}
+              </TimelineItem>
             ))}
-          {timeline.year === 0 && (
-            <Box
-              p={{ base: 3, sm: 6 }}
-              rounded="lg"
-              bg={useColorModeValue("orange.100", "purple.900")}
-              _hover={{
-                filter: `drop-shadow(0px 0px 10px rgba(${useColorModeValue("0, 0, 0", "255, 255, 255")}, 0.5))`,
-                transition: "all 0.3s ease-in-out",
+          </>
+        ))}
+        <SectionHeader variant="h3">Now</SectionHeader>
+            <Paper
+              elevation={3}
+              sx={{
+                padding: "2rem",
+                textAlign: "left",
+                width: "calc(80% - 2rem)",
+                marginX: "auto",
+                fontSize: "1.5rem",
+                borderBottomWidth: "0.5rem",
+                borderBottomColor:
+                  theme.palette[colorList[contentCount % colorList.length]]
+                    .main,
               }}
             >
-              {timeline.contents.map((content) => (
-                <Text fontSize="xl">{content.content}</Text>
-              ))}
-            </Box>
-          )}
-        </>
-      ))}
-    </>
+              {data.timeline.nodes.slice(-1)[0].contents[0].content}
+            </Paper>
+      </MuiTimeline>
+    </SectionBox>
   );
 };
 
