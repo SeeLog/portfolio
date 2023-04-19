@@ -9,9 +9,9 @@ interface SkillsRowProps {
 
 const SkillsRow: React.FC<SkillsRowProps> = ({ category, skillList }) => {
   const { ref, inView } = useInView({
-    // オプション
-    rootMargin: "-50px", // ref要素が現れてから50px過ぎたら
-    triggerOnce: false, // 最初の一度だけ実行
+    // animation options
+    rootMargin: "-50px",
+    triggerOnce: true,
   });
   return (
     <>
