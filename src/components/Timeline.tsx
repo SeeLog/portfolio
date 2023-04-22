@@ -6,13 +6,13 @@ import {
   TimelineSeparator,
   TimelineConnector,
   TimelineContent,
-  TimelineDot,
-  TimelineOppositeContent,
 } from "@mui/lab";
 import SectionDivider from "./SectionDivider";
 import SectionHeader from "./SectionHeader";
 import SectionBox from "./SectionBox";
-import { Paper, Typography, useTheme } from "@mui/material";
+import { Box, Paper, Typography, useTheme } from "@mui/material";
+import TimelineRow from "./TimelineRow";
+import { useInView } from "react-intersection-observer";
 
 interface TimelineData {
   timeline: {
@@ -40,13 +40,23 @@ const query = graphql`
   }
 `;
 
-const colorList = ["secondary", "success", "info", "warning", "error"] as const;
+export const timelineColorList = [
+  "secondary",
+  "success",
+  "info",
+  "warning",
+  "error",
+] as const;
 
-// TODO: Add animation
 const Timeline: React.FC = () => {
   const theme = useTheme();
   const data = useStaticQuery<TimelineData>(query);
   let contentCount = 0;
+  const { ref, inView } = useInView({
+    // animation options
+    rootMargin: "-50px",
+    triggerOnce: true,
+  });
 
   return (
     <SectionBox>
@@ -71,64 +81,42 @@ const Timeline: React.FC = () => {
               }}
             />
             {timeline.contents.map((content) => (
-              <TimelineItem
-                sx={{
-                  width: "80%",
-                  marginX: "auto",
-                }}
-              >
-                <TimelineOppositeContent
-                  sx={{
-                    margin: "auto 0",
-                  }}
-                >
-                  <SectionHeader variant="h4">{content.month}月</SectionHeader>
-                </TimelineOppositeContent>
-                <TimelineSeparator>
-                  <TimelineConnector />
-                  <TimelineDot
-                    color={colorList[contentCount % colorList.length]}
-                  />
-                  <TimelineConnector />
-                </TimelineSeparator>
-                <TimelineContent>
-                  <Paper
-                    elevation={3}
-                    sx={{
-                      padding: "2rem",
-                      textAlign: "left",
-                      borderBottomWidth: "0.5rem",
-                      borderBottomColor:
-                        theme.palette[
-                          colorList[contentCount % colorList.length]
-                        ].main,
-                    }}
-                  >
-                    <Typography variant="body1">{content.content}</Typography>
-                  </Paper>
-                </TimelineContent>
+              <>
+                <TimelineRow
+                  month={content.month.toString()}
+                  content={content.content}
+                  contentCount={contentCount}
+                />
                 {contentCount++ ? undefined : undefined}
-              </TimelineItem>
+              </>
             ))}
           </>
         ))}
-        <SectionHeader variant="h3">Now</SectionHeader>
-        <Paper
-          elevation={3}
-          sx={{
-            padding: "2rem",
-            textAlign: "left",
-            width: "calc(80% - 2rem)",
-            marginX: "auto",
-            borderBottomWidth: "0.5rem",
-            borderBottomColor:
-              theme.palette[colorList[contentCount % colorList.length]].main,
-          }}
-        >
-          <Typography variant="body1">
-            {data.timeline.nodes.slice(-1)[0].contents[0].content}
-          </Typography>
-        </Paper>
+        <Box ref={ref}>
+          {inView && (
+            <div className="animate__animated animate__fadeInUp">
+              <SectionHeader variant="h3">Now</SectionHeader>
+              <Paper
+                elevation={3}
+                sx={{
+                  padding: "2rem",
+                  textAlign: "left",
+                  width: "calc(80% - 2rem)",
+                  marginX: "auto",
+                  borderBottomWidth: "0.5rem",
+                  borderBottomColor:
+                    theme.palette[
+                      timelineColorList[contentCount % timelineColorList.length]
+                    ].main,
+                }}
+              >
+                <Typography variant="body1">
+                  {data.timeline.nodes.slice(-1)[0].contents[0].content}
+                </Typography>
+              </Paper>
+            </div>
+          )}
+        </Box>
       </MuiTimeline>
     </SectionBox>
   );
