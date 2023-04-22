@@ -73,9 +73,11 @@ const Timeline: React.FC = () => {
       >
         {data.timeline.nodes.slice(0, -1).map((timeline) => (
           <>
-            <TimelineItem sx={{
-              display: isSingleColumn ? "none" : "block",
-            }}>
+            <TimelineItem
+              sx={{
+                display: isSingleColumn ? "none" : "block",
+              }}
+            >
               <TimelineSeparator>
                 <SectionHeader variant="h3">{timeline.year}</SectionHeader>
                 <TimelineConnector />
@@ -104,29 +106,27 @@ const Timeline: React.FC = () => {
           </>
         ))}
         <Box ref={ref}>
-          {inView && (
-            <div className="animate__animated animate__fadeInUp">
-              <SectionHeader variant="h3">Now</SectionHeader>
-              <Paper
-                elevation={3}
-                sx={{
-                  padding: "2rem",
-                  textAlign: "left",
-                  width: "calc(80% - 2rem)",
-                  marginX: "auto",
-                  borderBottomWidth: "0.5rem",
-                  borderBottomColor:
-                    theme.palette[
-                      timelineColorList[contentCount % timelineColorList.length]
-                    ].main,
-                }}
-              >
-                <Typography variant="body1">
-                  {data.timeline.nodes.slice(-1)[0].contents[0].content}
-                </Typography>
-              </Paper>
-            </div>
-          )}
+          <div className={inView ? "animate__animated animate__fadeInUp" : ""}>
+            <SectionHeader variant="h3">Now</SectionHeader>
+            <Paper
+              elevation={3}
+              sx={{
+                padding: "2rem",
+                textAlign: "left",
+                width: isSingleColumn ? "calc(100% - 2rem)" :"calc(80% - 2rem)",
+                marginX: "auto",
+                borderBottomWidth: "0.5rem",
+                borderBottomColor:
+                  theme.palette[
+                    timelineColorList[contentCount % timelineColorList.length]
+                  ].main,
+              }}
+            >
+              <Typography variant="body1">
+                {data.timeline.nodes.slice(-1)[0].contents[0].content}
+              </Typography>
+            </Paper>
+          </div>
         </Box>
       </MuiTimeline>
     </SectionBox>

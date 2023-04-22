@@ -37,26 +37,26 @@ const TimelineRow: React.FC<TimelineRowProps> = ({
     <>
       <TimelineItem
         sx={{
-          minWidth: "80%",
+          minWidth: isSingleColumn ? "100%" : "80%",
           marginX: "auto",
         }}
         ref={ref}
       >
-        {inView && (
-          <TimelineOppositeContent
-            sx={{
-              margin: "auto 0",
-            }}
-            className={
-              contentCount % 2 === 0
+        <TimelineOppositeContent
+          sx={{
+            margin: "auto 0",
+          }}
+          className={
+            inView
+              ? contentCount % 2 === 0
                 ? "animate__animated animate__fadeInLeft"
                 : "animate__animated animate__fadeInRight"
-            }
-            display={isSingleColumn ? "none" : "block"}
-          >
-            <SectionHeader variant="h4">{month}月</SectionHeader>
-          </TimelineOppositeContent>
-        )}
+              : ""
+          }
+          display={isSingleColumn ? "none" : "block"}
+        >
+          <SectionHeader variant="h4">{month}月</SectionHeader>
+        </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineConnector />
           <TimelineDot
@@ -70,38 +70,38 @@ const TimelineRow: React.FC<TimelineRowProps> = ({
             maxWidth: isSingleColumn ? "100%" : "80%",
           }}
         >
-          {inView && (
-            <Paper
-              className={
-                contentCount % 2 === 0 || isSingleColumn
+          <Paper
+            className={
+              inView
+                ? contentCount % 2 === 0 || isSingleColumn
                   ? "animate__animated animate__fadeInRight"
                   : "animate__animated animate__fadeInLeft"
-              }
-              elevation={3}
-              sx={{
-                padding: "2rem",
-                textAlign: "left",
-                borderBottomWidth: "0.5rem",
-                borderBottomColor:
-                  theme.palette[
-                    timelineColorList[contentCount % timelineColorList.length]
-                  ].main,
-              }}
-            >
-              {isSingleColumn && (
-                <Typography
-                  variant="h4"
-                  sx={{
-                    fontWeight: "bold",
-                    mb: "1rem",
-                  }}
-                >
-                  {year}年{month}月
-                </Typography>
-              )}
-              <Typography variant="body1">{content}</Typography>
-            </Paper>
-          )}
+                : ""
+            }
+            elevation={3}
+            sx={{
+              padding: "2rem",
+              textAlign: "left",
+              borderBottomWidth: "0.5rem",
+              borderBottomColor:
+                theme.palette[
+                  timelineColorList[contentCount % timelineColorList.length]
+                ].main,
+            }}
+          >
+            {isSingleColumn && (
+              <Typography
+                variant="h4"
+                sx={{
+                  fontWeight: "bold",
+                  mb: "1rem",
+                }}
+              >
+                {year}年{month}月
+              </Typography>
+            )}
+            <Typography variant="body1">{content}</Typography>
+          </Paper>
         </TimelineContent>
       </TimelineItem>
     </>

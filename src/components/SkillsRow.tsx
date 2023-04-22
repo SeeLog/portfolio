@@ -16,36 +16,33 @@ const SkillsRow: React.FC<SkillsRowProps> = ({ category, skillList }) => {
   return (
     <>
       <Grid item xs={6}>
-        {inView && (
-          <Typography
-            variant="h3"
-            className="animate__animated animate__fadeInLeft"
-          >
-            {category}
-          </Typography>
-        )}
+        <Typography
+          variant="h3"
+          className={inView ? "animate__animated animate__fadeInLeft" : ""}
+        >
+          {category}
+        </Typography>
       </Grid>
       <Grid item xs={6}>
         <Box ref={ref}>
-          {inView &&
-            skillList.map((skill) => (
-              <Chip
-                color="primary"
-                variant="outlined"
-                className="animate__animated animate__fadeInLeft"
-                sx={{
-                  fontSize: "1.5rem",
-                  padding: "1rem 1rem",
-                  marginX: "0.25rem",
-                  marginY: "0.25rem",
-                  "&:hover": {
-                    backgroundColor: "primary.main",
-                    color: "primary.contrastText",
-                  },
-                }}
-                label={skill}
-              />
-            ))}
+          {skillList.map((skill) => (
+            <Chip
+              color="primary"
+              variant="outlined"
+              className={inView ? "animate__animated animate__fadeInLeft" : ""}
+              sx={{
+                fontSize: "1.5rem",
+                padding: "1rem 1rem",
+                marginX: "0.25rem",
+                marginY: "0.25rem",
+                "&:hover": {
+                  backgroundColor: "primary.main",
+                  color: "primary.contrastText",
+                },
+              }}
+              label={skill}
+            />
+          ))}
         </Box>
       </Grid>
     </>
