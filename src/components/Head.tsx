@@ -23,3 +23,5 @@ const Head: React.FC = () => {
     </>
   );
 };
+
+export { Head };
