@@ -51,7 +51,7 @@ const Header: React.FC = () => {
   );
   const handleMenuItemClick = useCallback(
     (event: React.MouseEvent<HTMLElement>, scrollTarget: string) => {
-      // keep scrolling after menu closed
+      // Keep scrolling after menu closed
       setTimeout(() => {
         scrollTo(scrollTarget, "start");
       }, 0);

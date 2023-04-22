@@ -1,18 +1,15 @@
 import React from "react";
 import {
-  Stack,
   Box,
   Typography,
   useTheme,
   Grid,
   Paper,
-  Fade,
 } from "@mui/material";
 import { StaticImage } from "gatsby-plugin-image";
 
 const Hero = () => {
   const theme = useTheme();
-  console.log(theme.palette.mode);
 
   return (
     <Box minHeight="100vh" minWidth="100%" id="hero">

@@ -1,0 +1,36 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 18
+      # make env file
+      - run: echo GATSBY_TRACKING_ID=${{ secrets.GATSBY_TRACKING_ID }} > .env.production
+      - run: echo GATSBY_S3_BUCKET_NAME=${{ secrets.GATSBY_S3_BUCKET_NAME }} >> .env.production
+      - name: Cache node modules
+        id: cache-node-modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - run: npm ci
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      - run: npm run build
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: 'arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.AWS_ROLE }}'
+      - name: Deploy to s3
+        run: npm run deploy
