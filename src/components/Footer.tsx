@@ -1,16 +1,21 @@
 import React from "react";
-import { Center, Divider, Link, Text } from "@chakra-ui/react";
+import SectionBox from "./SectionBox";
+import SectionDivider from "./SectionDivider";
+import { Paper, Link, Typography, Box } from "@mui/material";
 
 const Footer = () => {
   return (
-    <>
-      <Divider py={10} />
-      <Center py={10}>
-        <Text fontSize="lg">
-          © 2010 - 2023 <Link href="https://github.com/SeeLog">SeeLog</Link> All Rights Reserved.
-        </Text>
-      </Center>
-    </>
+    <SectionBox>
+      <Paper elevation={0}>
+        <SectionDivider />
+        <Box py={4}>
+        <Typography fontSize="lg">
+          © 2010 - 2023 <Link href="https://github.com/SeeLog">SeeLog</Link> All
+          Rights Reserved.
+        </Typography>
+        </Box>
+      </Paper>
+    </SectionBox>
   );
 };
 

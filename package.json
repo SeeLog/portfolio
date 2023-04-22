@@ -13,20 +13,24 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy": "gatsby-plugin-s3 deploy"
   },
   "dependencies": {
-    "@chakra-ui/gatsby-plugin": "^3.1.1",
-    "@chakra-ui/icons": "^2.0.18",
-    "@chakra-ui/react": "^2.5.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fontsource/dynapuff": "^4.5.4",
     "@fontsource/noto-sans-jp": "^4.5.12",
     "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/lab": "^5.0.0-alpha.127",
+    "@mui/material": "^5.12.0",
+    "animate.css": "^4.1.1",
+    "dotenv": "^16.0.3",
     "framer-motion": "^10.11.6",
     "gatsby": "^5.8.1",
     "gatsby-plugin-emotion": "^8.8.0",
+    "gatsby-plugin-google-gtag": "^5.8.0",
     "gatsby-plugin-image": "^3.8.0",
     "gatsby-plugin-s3": "^0.4.1",
     "gatsby-plugin-sharp": "^5.8.1",
@@ -36,7 +40,8 @@
     "gatsby-transformer-yaml": "^5.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0"
+    "react-icons": "^4.8.0",
+    "react-intersection-observer": "^9.4.3"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",

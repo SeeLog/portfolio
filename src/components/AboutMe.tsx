@@ -1,6 +1,9 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { Divider, Heading, Text } from "@chakra-ui/react";
+import { Typography } from "@mui/material";
+import SectionBox from "./SectionBox";
+import SectionDivider from "./SectionDivider";
+import SectionHeader from "./SectionHeader";
 
 interface AboutMeData {
   aboutMe: {
@@ -24,14 +27,12 @@ const AboutMe: React.FC = () => {
   const data = useStaticQuery<AboutMeData>(query);
 
   return (
-    <>
-      <Divider py={10} id="about" />
-      <Heading as="h2" size="2xl" p="30px">
-        About Me
-      </Heading>
-      <Text fontSize="2xl">{data.aboutMe.content}</Text>
-      <Text fontSize="xl">{data.aboutMe.subContent}</Text>
-    </>
+    <SectionBox>
+      <SectionDivider id="about" />
+      <SectionHeader variant="h2" p={4}>About Me</SectionHeader>
+      <Typography variant="body1">{data.aboutMe.content}</Typography>
+      <Typography variant="body2">{data.aboutMe.subContent}</Typography>
+    </SectionBox>
   );
 };
 
