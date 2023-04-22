@@ -11,6 +11,7 @@ import {
   CardContent,
   CardMedia,
   Chip,
+  Divider,
   Grid,
   Typography,
 } from "@mui/material";
@@ -69,7 +70,7 @@ const Works: React.FC = () => {
       <Typography variant="body1" mb={4}>
         忘れたやつは省略。他にもあったら教えて下さい。
       </Typography>
-      <Grid container spacing={4} justifyContent="center" mx="auto">
+      <Grid container spacing={4}>
         {data.works.nodes.map((work) => (
           <Grid item xs={12} sm={12} md={6} xl={4}>
             {work.url !== "" ? (
@@ -100,39 +101,38 @@ const WorkCard: React.FC<WorkCardProps> = (props: WorkCardProps) => {
 
   return (
     <div ref={ref}>
-      {inView && (
-        <Card
-          className="animate__animated animate__bounceIn"
-          sx={{
-            ":hover": {
-              boxShadow: `0 0 10px 2px rgba(${getColorWithMode(
-                "0, 0, 0",
-                "255, 255, 255"
-              )}, 0.5)`,
-              transform: "translateY(-2px)",
-              transition: "all 0.2s ease-in-out",
-            },
-          }}
-        >
-          <CardMedia>
-            <GatsbyImage
-              image={props.work.image.childImageSharp.gatsbyImageData}
-              alt={props.work.title}
-            />
-          </CardMedia>
-          <CardContent>
-            <Typography variant="h3" mb={2}>
-              {props.work.title}
-            </Typography>
-            <Typography variant="body1">{props.work.description}</Typography>
-            <Box>
-              {props.work.tags.map((tag) => (
-                <Chip key={tag} label={tag} />
-              ))}
-            </Box>
-          </CardContent>
-        </Card>
-      )}
+      <Card
+        className={ inView ? "animate__animated animate__bounceIn" : "" }
+        sx={{
+          ":hover": {
+            boxShadow: `0 0 10px 2px rgba(${getColorWithMode(
+              "0, 0, 0",
+              "255, 255, 255"
+            )}, 0.5)`,
+            transform: "translateY(-2px)",
+            transition: "all 0.2s ease-in-out",
+          },
+        }}
+      >
+        <CardMedia>
+          <GatsbyImage
+            image={props.work.image.childImageSharp.gatsbyImageData}
+            alt={props.work.title}
+          />
+        </CardMedia>
+        <CardContent>
+          <Typography variant="h3" mb={2}>
+            {props.work.title}
+          </Typography>
+          <Typography variant="body1">{props.work.description}</Typography>
+          <Divider sx={{ my: 2 }} />
+          <Box>
+            {props.work.tags.map((tag) => (
+              <Chip key={tag} label={tag} />
+            ))}
+          </Box>
+        </CardContent>
+      </Card>
     </div>
   );
 };
