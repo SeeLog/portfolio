@@ -1,4 +1,9 @@
 import type { GatsbyConfig } from "gatsby";
+import dotenv from "dotenv";
+
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -17,6 +22,20 @@ const config: GatsbyConfig = {
       options: {
         name: "config",
         path: `${__dirname}/src/data`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-google-gtag",
+      options: {
+        trackingIds: [process.env.GATSBY_TRACKING_ID],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-s3",
+      options: {
+        bucketName: process.env.GATSBY_S3_BUCKET_NAME,
+        protocol: "https",
+        hostname: "seelog.me",
       },
     },
     "gatsby-plugin-smoothscroll",
