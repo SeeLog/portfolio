@@ -51,6 +51,8 @@
   tags:
   - Android
   - Java
+  - PHP
+  - MySQL
 
 - title: ScreenGuardian
   description: Android 向けのロック画面アプリ。昔の Android は iOS みたいにロック画面とホーム画面の画像を別々に設定できなかった。あとロック画面がダサかったのでかっこよくするためのアプリ。Sony Select に掲載されたり、ギズモードに取り上げられたりもした。現在は Android の発展とともにクローズ済み。
