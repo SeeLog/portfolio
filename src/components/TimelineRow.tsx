@@ -7,18 +7,20 @@ import {
   TimelineOppositeContent,
   TimelineSeparator,
 } from "@mui/lab";
-import { Paper, Typography, useTheme } from "@mui/material";
+import { Paper, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useInView } from "react-intersection-observer";
 import { timelineColorList } from "./Timeline";
 import SectionHeader from "./SectionHeader";
 
 export interface TimelineRowProps {
+  year: string;
   month: string;
   content: string;
   contentCount: number;
 }
 
 const TimelineRow: React.FC<TimelineRowProps> = ({
+  year,
   month,
   content,
   contentCount,
@@ -29,12 +31,13 @@ const TimelineRow: React.FC<TimelineRowProps> = ({
     rootMargin: "-50px",
     triggerOnce: true,
   });
+  const isSingleColumn = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <>
       <TimelineItem
         sx={{
-          width: "80%",
+          minWidth: "80%",
           marginX: "auto",
         }}
         ref={ref}
@@ -49,6 +52,7 @@ const TimelineRow: React.FC<TimelineRowProps> = ({
                 ? "animate__animated animate__fadeInLeft"
                 : "animate__animated animate__fadeInRight"
             }
+            display={isSingleColumn ? "none" : "block"}
           >
             <SectionHeader variant="h4">{month}月</SectionHeader>
           </TimelineOppositeContent>
@@ -60,15 +64,19 @@ const TimelineRow: React.FC<TimelineRowProps> = ({
           />
           <TimelineConnector />
         </TimelineSeparator>
-        {inView && (
-          <TimelineContent
-            className={
-              contentCount % 2 === 0
-                ? "animate__animated animate__fadeInRight"
-                : "animate__animated animate__fadeInLeft"
-            }
-          >
+
+        <TimelineContent
+          sx={{
+            maxWidth: isSingleColumn ? "100%" : "80%",
+          }}
+        >
+          {inView && (
             <Paper
+              className={
+                contentCount % 2 === 0 || isSingleColumn
+                  ? "animate__animated animate__fadeInRight"
+                  : "animate__animated animate__fadeInLeft"
+              }
               elevation={3}
               sx={{
                 padding: "2rem",
@@ -80,10 +88,21 @@ const TimelineRow: React.FC<TimelineRowProps> = ({
                   ].main,
               }}
             >
+              {isSingleColumn && (
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: "bold",
+                    mb: "1rem",
+                  }}
+                >
+                  {year}年{month}月
+                </Typography>
+              )}
               <Typography variant="body1">{content}</Typography>
             </Paper>
-          </TimelineContent>
-        )}
+          )}
+        </TimelineContent>
       </TimelineItem>
     </>
   );

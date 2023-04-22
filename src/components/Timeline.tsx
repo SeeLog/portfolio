@@ -6,11 +6,12 @@ import {
   TimelineSeparator,
   TimelineConnector,
   TimelineContent,
+  TimelineOppositeContent,
 } from "@mui/lab";
 import SectionDivider from "./SectionDivider";
 import SectionHeader from "./SectionHeader";
 import SectionBox from "./SectionBox";
-import { Box, Paper, Typography, useTheme } from "@mui/material";
+import { Box, Paper, Typography, useMediaQuery, useTheme } from "@mui/material";
 import TimelineRow from "./TimelineRow";
 import { useInView } from "react-intersection-observer";
 
@@ -57,15 +58,24 @@ const Timeline: React.FC = () => {
     rootMargin: "-50px",
     triggerOnce: true,
   });
+  const isSingleColumn = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <SectionBox>
       <SectionDivider id="timeline" />
       <SectionHeader variant="h2">Timeline</SectionHeader>
-      <MuiTimeline position="alternate">
+      <MuiTimeline
+        position={isSingleColumn ? "right" : "alternate"}
+        sx={{
+          width: isSingleColumn ? "100%" : "80%",
+          marginX: "auto",
+        }}
+      >
         {data.timeline.nodes.slice(0, -1).map((timeline) => (
           <>
-            <TimelineItem>
+            <TimelineItem sx={{
+              display: isSingleColumn ? "none" : "block",
+            }}>
               <TimelineSeparator>
                 <SectionHeader variant="h3">{timeline.year}</SectionHeader>
                 <TimelineConnector />
@@ -83,6 +93,7 @@ const Timeline: React.FC = () => {
             {timeline.contents.map((content) => (
               <>
                 <TimelineRow
+                  year={timeline.year.toString()}
                   month={content.month.toString()}
                   content={content.content}
                   contentCount={contentCount}
