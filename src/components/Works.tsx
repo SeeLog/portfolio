@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
-import {
-  Heading,
-  Text,
-  SimpleGrid,
-  GridItem,
-  Card,
-  Box,
-  Divider,
-  Tag,
-  CardFooter,
-  CardBody,
-  useColorModeValue,
-} from "@chakra-ui/react";
 import { IGatsbyImageData, GatsbyImage } from "gatsby-plugin-image";
+import { useTheme } from "@emotion/react";
+import SectionBox from "./SectionBox";
+import SectionDivider from "./SectionDivider";
+import SectionHeader from "./SectionHeader";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  Chip,
+  Grid,
+  Typography,
+} from "@mui/material";
+import ColorModeContext from "../context/ColorModeContext";
+import { useInView } from "react-intersection-observer";
 
 interface WorksData {
   works: {
@@ -58,17 +60,18 @@ const query = graphql`
 
 const Works: React.FC = () => {
   const data = useStaticQuery<WorksData>(query);
+  const theme = useTheme();
 
   return (
-    <>
-      <Divider py={10} id="works" />
-      <Heading as="h2" size="2xl" p="30px">
-        Works
-      </Heading>
-      <Text>忘れたやつは省略。他にもあったら教えて下さい。</Text>
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={6} p="30px">
+    <SectionBox width="80%">
+      <SectionDivider id="works" />
+      <SectionHeader variant="h2">Works</SectionHeader>
+      <Typography variant="body1" mb={4}>
+        忘れたやつは省略。他にもあったら教えて下さい。
+      </Typography>
+      <Grid container spacing={4} justifyContent="center" mx="auto">
         {data.works.nodes.map((work) => (
-          <GridItem colSpan={1}>
+          <Grid item xs={12} sm={12} md={6} xl={4}>
             {work.url !== "" ? (
               <Link to={work.url} target="_blank">
                 <WorkCard work={work} />
@@ -76,10 +79,10 @@ const Works: React.FC = () => {
             ) : (
               <WorkCard work={work} />
             )}
-          </GridItem>
+          </Grid>
         ))}
-      </SimpleGrid>
-    </>
+      </Grid>
+    </SectionBox>
   );
 };
 
@@ -88,39 +91,49 @@ interface WorkCardProps {
 }
 
 const WorkCard: React.FC<WorkCardProps> = (props: WorkCardProps) => {
+  const { getColorWithMode } = useContext(ColorModeContext);
+  const { ref, inView } = useInView({
+    // animation options
+    rootMargin: "-300px",
+    triggerOnce: true,
+  });
+
   return (
-    <Card
-      _hover={{
-        boxShadow: `0 0 10px 2px rgba(${useColorModeValue(
-          "0, 0, 0",
-          "255, 255, 255"
-        )}, 0.5)`,
-        transform: "translateY(-2px)",
-        transition: "all 0.2s ease-in-out",
-      }}
-    >
-      <Box width="100%">
-        <GatsbyImage
-          image={props.work.image.childImageSharp.gatsbyImageData}
-          alt={props.work.title}
-        />
-      </Box>
-      <CardBody px={8}>
-        <Heading as="h3" size="xl" mb={2}>
-          {props.work.title}
-        </Heading>
-        <Text fontSize="xl">{props.work.description}</Text>
-      </CardBody>
-      <CardFooter>
-        <Box>
-          {props.work.tags.map((tag) => (
-            <Tag size="lg" m="5px" px="8px" py="4px" key={tag}>
-              {tag}
-            </Tag>
-          ))}
-        </Box>
-      </CardFooter>
-    </Card>
+    <div ref={ref}>
+      {inView && (
+        <Card
+          className="animate__animated animate__bounceIn"
+          sx={{
+            ":hover": {
+              boxShadow: `0 0 10px 2px rgba(${getColorWithMode(
+                "0, 0, 0",
+                "255, 255, 255"
+              )}, 0.5)`,
+              transform: "translateY(-2px)",
+              transition: "all 0.2s ease-in-out",
+            },
+          }}
+        >
+          <CardMedia>
+            <GatsbyImage
+              image={props.work.image.childImageSharp.gatsbyImageData}
+              alt={props.work.title}
+            />
+          </CardMedia>
+          <CardContent>
+            <Typography variant="h3" mb={2}>
+              {props.work.title}
+            </Typography>
+            <Typography variant="body1">{props.work.description}</Typography>
+            <Box>
+              {props.work.tags.map((tag) => (
+                <Chip key={tag} label={tag} />
+              ))}
+            </Box>
+          </CardContent>
+        </Card>
+      )}
+    </div>
   );
 };
 
