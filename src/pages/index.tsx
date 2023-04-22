@@ -80,4 +80,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>seelog.me</title>;
+export { Head } from "../components/Head";
