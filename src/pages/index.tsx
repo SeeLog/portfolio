@@ -55,10 +55,10 @@ const IndexPage: React.FC<PageProps> = () => {
             }}
           >
             <AboutMe />
+            <Contact />
             <Skills />
             <Timeline />
             <Works />
-            <Contact />
           </Grid>
           <Footer />
         </ThemeProvider>
