@@ -74,7 +74,9 @@ const Works: React.FC = () => {
         {data.works.nodes.map((work) => (
           <Grid item xs={12} sm={12} md={6} xl={4}>
             {work.url !== "" ? (
-              <Link to={work.url} target="_blank">
+              <Link to={work.url} target="_blank" style={{
+                textDecoration: "none",
+              }}>
                 <WorkCard work={work} />
               </Link>
             ) : (

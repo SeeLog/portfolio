@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useLayoutEffect } from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import "@fontsource/noto-sans-jp";
 import "@fontsource/roboto";
@@ -23,7 +23,9 @@ const IndexPage: React.FC<PageProps> = () => {
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prev) => (prev === "light" ? "dark" : "light"));
+        const newMode = mode === "light" ? "dark" : "light";
+        setMode(newMode);
+        localStorage.setItem("themeMode", newMode);
       },
       colorMode: mode,
       getColorWithMode: (light: string, dark: string) =>
@@ -31,6 +33,15 @@ const IndexPage: React.FC<PageProps> = () => {
     }),
     [mode]
   );
+
+  useLayoutEffect(() => {
+    const themeMode = localStorage.getItem("themeMode");
+    if (themeMode) {
+      if (themeMode === "light" || themeMode === "dark") {
+        setMode(themeMode as "light" | "dark");
+      }
+    }
+  }, []);
 
   const theme = useMemo(() => {
     return mode === "light" ? lightTheme : darkTheme;
