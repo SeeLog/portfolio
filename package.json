@@ -17,9 +17,6 @@
     "deploy": "gatsby-plugin-s3 deploy"
   },
   "dependencies": {
-    "@chakra-ui/gatsby-plugin": "^3.1.1",
-    "@chakra-ui/icons": "^2.0.18",
-    "@chakra-ui/react": "^2.5.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fontsource/dynapuff": "^4.5.4",
