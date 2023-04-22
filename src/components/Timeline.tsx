@@ -12,7 +12,7 @@ import {
 import SectionDivider from "./SectionDivider";
 import SectionHeader from "./SectionHeader";
 import SectionBox from "./SectionBox";
-import { Paper, useTheme } from "@mui/material";
+import { Paper, Typography, useTheme } from "@mui/material";
 
 interface TimelineData {
   timeline: {
@@ -40,14 +40,9 @@ const query = graphql`
   }
 `;
 
-const colorList = [
-  "secondary",
-  "success",
-  "info",
-  "warning",
-  "error",
-] as const;
+const colorList = ["secondary", "success", "info", "warning", "error"] as const;
 
+// TODO: Add animation
 const Timeline: React.FC = () => {
   const theme = useTheme();
   const data = useStaticQuery<TimelineData>(query);
@@ -109,7 +104,7 @@ const Timeline: React.FC = () => {
                         ].main,
                     }}
                   >
-                    {content.content}
+                    <Typography variant="body1">{content.content}</Typography>
                   </Paper>
                 </TimelineContent>
                 {contentCount++ ? undefined : undefined}
@@ -118,22 +113,22 @@ const Timeline: React.FC = () => {
           </>
         ))}
         <SectionHeader variant="h3">Now</SectionHeader>
-            <Paper
-              elevation={3}
-              sx={{
-                padding: "2rem",
-                textAlign: "left",
-                width: "calc(80% - 2rem)",
-                marginX: "auto",
-                fontSize: "1.5rem",
-                borderBottomWidth: "0.5rem",
-                borderBottomColor:
-                  theme.palette[colorList[contentCount % colorList.length]]
-                    .main,
-              }}
-            >
-              {data.timeline.nodes.slice(-1)[0].contents[0].content}
-            </Paper>
+        <Paper
+          elevation={3}
+          sx={{
+            padding: "2rem",
+            textAlign: "left",
+            width: "calc(80% - 2rem)",
+            marginX: "auto",
+            borderBottomWidth: "0.5rem",
+            borderBottomColor:
+              theme.palette[colorList[contentCount % colorList.length]].main,
+          }}
+        >
+          <Typography variant="body1">
+            {data.timeline.nodes.slice(-1)[0].contents[0].content}
+          </Typography>
+        </Paper>
       </MuiTimeline>
     </SectionBox>
   );
