@@ -8,7 +8,11 @@ dotenv.config({
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `seelog.me`,
-    siteUrl: `https://www.yourdomain.tld`,
+    description: `ろぐみ/SeeLogのポートフォリオ的なサイト`,
+    siteUrl: `https://seelog.me`,
+    ogLaunguage: `ja_JP`,
+    icon: `src/images/icon.png`,
+    author: `ろぐみ/SeeLog`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -50,6 +54,21 @@ const config: GatsbyConfig = {
       },
       __key: "images",
     },
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        name: `seelog.me`,
+        short_name: `seelog.me`,
+        description: `ろぐみ/SeeLogのポートフォリオ的なサイト`,
+        start_url: `/`,
+        lang: `ja-JP`,
+        display: `standalone`,
+        icon: `src/images/icon.png`,
+        icon_options: {
+          purpose: `any maskable`,
+        },
+      },
+    }
   ],
 };
 

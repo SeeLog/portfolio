@@ -2,7 +2,7 @@
   "name": "seelog.me",
   "version": "1.0.0",
   "private": true,
-  "description": "seelog.me",
+  "description": "ろぐみ/SeeLogのポートフォリオ的なサイト",
   "author": "SeeLog",
   "keywords": [
     "gatsby"
@@ -32,6 +32,7 @@
     "gatsby-plugin-emotion": "^8.8.0",
     "gatsby-plugin-google-gtag": "^5.8.0",
     "gatsby-plugin-image": "^3.8.0",
+    "gatsby-plugin-manifest": "^5.9.0",
     "gatsby-plugin-s3": "^0.4.1",
     "gatsby-plugin-sharp": "^5.8.1",
     "gatsby-plugin-smoothscroll": "^1.2.0",
@@ -48,5 +49,9 @@
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
     "typescript": "^5.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SeeLog/portfolio"
   }
 }
