@@ -25,21 +25,22 @@ const SkillsRow: React.FC<SkillsRowProps> = ({ category, skillList }) => {
 
   return (
     <>
-      <Grid item sm={12} md={6}>
+      <Grid item sm={12} md={6} pb={
+        isMobile ? "1rem" : undefined
+      }>
         <Box>
           <Typography
             variant="h3"
-            sx={{
-              textAlign: isMobile ? "center" : "left",
-              width: "100%",
-            }}
+            mx="auto"
             className={inView ? "animate__animated animate__fadeInLeft" : ""}
           >
             {category}
           </Typography>
         </Box>
       </Grid>
-      <Grid item sm={12} md={6}>
+      <Grid item sm={12} md={6} pb={
+        isMobile ? "1rem" : undefined
+      }>
         <Box ref={ref}>
           {skillList.map((skill) => (
             <Chip
