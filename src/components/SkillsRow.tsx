@@ -1,5 +1,12 @@
 import React from "react";
-import { Grid, Typography, Box, Chip } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  Box,
+  Chip,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { useInView } from "react-intersection-observer";
 
 interface SkillsRowProps {
@@ -13,17 +20,26 @@ const SkillsRow: React.FC<SkillsRowProps> = ({ category, skillList }) => {
     rootMargin: "-50px",
     triggerOnce: true,
   });
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <>
-      <Grid item xs={6}>
-        <Typography
-          variant="h3"
-          className={inView ? "animate__animated animate__fadeInLeft" : ""}
-        >
-          {category}
-        </Typography>
+      <Grid item sm={12} md={6}>
+        <Box>
+          <Typography
+            variant="h3"
+            sx={{
+              textAlign: isMobile ? "center" : "left",
+              width: "100%",
+            }}
+            className={inView ? "animate__animated animate__fadeInLeft" : ""}
+          >
+            {category}
+          </Typography>
+        </Box>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item sm={12} md={6}>
         <Box ref={ref}>
           {skillList.map((skill) => (
             <Chip
