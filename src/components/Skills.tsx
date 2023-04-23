@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { Grid, Typography, Chip, Box, Slide } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import SectionDivider from "./SectionDivider";
 import SectionHeader from "./SectionHeader";
 import SectionBox from "./SectionBox";
@@ -42,7 +42,7 @@ const Skills: React.FC = () => {
       <Box width="100%">
         <Grid
           container
-          spacing={8}
+          spacing={4}
           sx={{
             textAlign: "left",
             maxWidth: "80%",
