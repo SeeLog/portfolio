@@ -91,8 +91,8 @@ const TimelineRow: React.FC<TimelineRowProps> = ({
           >
             {isSingleColumn && (
               <Typography
-                variant="h4"
                 sx={{
+                  fontSize: "1.5rem",
                   fontWeight: "bold",
                   mb: "1rem",
                 }}

@@ -125,7 +125,6 @@ const Header: React.FC = () => {
             }}
           >
             <Typography
-              component="a"
               variant="h5"
               fontFamily="dynapuff"
               onClick={() => scrollTo("#hero", "start")}
@@ -166,7 +165,7 @@ const Header: React.FC = () => {
           </Box>
 
           <Box>
-            <Button onClick={toggle} color="inherit">
+            <Button onClick={toggle} color="inherit" aria-label="モード切替">
               {colorMode === "light" ? <DarkMode /> : <LightMode />}
             </Button>
           </Box>
