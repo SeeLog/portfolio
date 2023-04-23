@@ -125,7 +125,6 @@ const Header: React.FC = () => {
             }}
           >
             <Typography
-              component="a"
               variant="h5"
               fontFamily="dynapuff"
               onClick={() => scrollTo("#hero", "start")}
