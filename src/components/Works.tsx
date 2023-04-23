@@ -97,7 +97,7 @@ const WorkCard: React.FC<WorkCardProps> = (props: WorkCardProps) => {
   const { getColorWithMode } = useContext(ColorModeContext);
   const { ref, inView } = useInView({
     // animation options
-    rootMargin: "-300px",
+    rootMargin: "-200px",
     triggerOnce: true,
   });
 
