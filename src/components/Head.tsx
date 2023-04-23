@@ -3,6 +3,7 @@ import React from "react";
 const Head: React.FC = () => {
   return (
     <>
+      <html lang="ja" />
       <title>seelog.me</title>
       <meta name="description" content="ろぐみ/Seelogのポートフォリオ的なサイト" />
       <meta name="keywords" content="ろぐみ,Seelog,ポートフォリオ,プログラミング" />
