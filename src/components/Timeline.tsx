@@ -58,7 +58,7 @@ const Timeline: React.FC = () => {
     rootMargin: "-50px",
     triggerOnce: true,
   });
-  const isSingleColumn = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSingleColumn = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <SectionBox>
