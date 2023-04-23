@@ -105,30 +105,30 @@ const Timeline: React.FC = () => {
             ))}
           </>
         ))}
-        <Box ref={ref}>
-          <div className={inView ? "animate__animated animate__fadeInUp" : ""}>
-            <SectionHeader variant="h3">Now</SectionHeader>
-            <Paper
-              elevation={3}
-              sx={{
-                padding: "2rem",
-                textAlign: "left",
-                width: isSingleColumn ? "calc(100% - 2rem)" :"calc(80% - 2rem)",
-                marginX: "auto",
-                borderBottomWidth: "0.5rem",
-                borderBottomColor:
-                  theme.palette[
-                    timelineColorList[contentCount % timelineColorList.length]
-                  ].main,
-              }}
-            >
-              <Typography variant="body1">
-                {data.timeline.nodes.slice(-1)[0].contents[0].content}
-              </Typography>
-            </Paper>
-          </div>
-        </Box>
       </MuiTimeline>
+      <Box ref={ref}>
+        <div className={inView ? "animate__animated animate__fadeInUp" : ""}>
+          <SectionHeader variant="h3">Now</SectionHeader>
+          <Paper
+            elevation={3}
+            sx={{
+              padding: "2rem",
+              textAlign: "left",
+              width: isSingleColumn ? "calc(100% - 2rem)" : "calc(80% - 2rem)",
+              marginX: "auto",
+              borderBottomWidth: "0.5rem",
+              borderBottomColor:
+                theme.palette[
+                  timelineColorList[contentCount % timelineColorList.length]
+                ].main,
+            }}
+          >
+            <Typography variant="body1">
+              {data.timeline.nodes.slice(-1)[0].contents[0].content}
+            </Typography>
+          </Paper>
+        </div>
+      </Box>
     </SectionBox>
   );
 };
