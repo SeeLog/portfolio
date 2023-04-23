@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, useTheme, useMediaQuery } from "@mui/material";
 import SectionDivider from "./SectionDivider";
 import SectionHeader from "./SectionHeader";
 import SectionBox from "./SectionBox";
@@ -28,6 +28,8 @@ const query = graphql`
 
 const Skills: React.FC = () => {
   const data = useStaticQuery<SkillsData>(query);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <SectionBox>
@@ -42,12 +44,14 @@ const Skills: React.FC = () => {
       <Box width="100%">
         <Grid
           container
-          spacing={4}
+          spacing={isMobile ? 0 : 4}
           sx={{
             textAlign: "left",
             maxWidth: "80%",
             margin: "0 auto",
           }}
+          justifyContent="center"
+          alignItems="center"
         >
           {data.skills.nodes.map((skill) => (
             <SkillsRow category={skill.category} skillList={skill.skillList} />
