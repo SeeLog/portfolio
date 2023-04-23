@@ -47,8 +47,8 @@ const SkillsRow: React.FC<SkillsRowProps> = ({ category, skillList }) => {
               variant="outlined"
               className={inView ? "animate__animated animate__fadeInLeft" : ""}
               sx={{
-                fontSize: "1.5rem",
-                padding: "1rem 1rem",
+                fontSize: isMobile ? "1rem" : "1.5rem",
+                padding: isMobile ? "0.25rem 0.5rem" : "0.5rem 1rem",
                 marginX: "0.25rem",
                 marginY: "0.25rem",
                 "&:hover": {
