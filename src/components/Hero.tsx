@@ -177,6 +177,7 @@ const IconAndName = () => {
           variant="body2"
           position="absolute"
           left="50%"
+          width="100%"
           sx={{
             transform: "translateX(-50%)",
           }}
