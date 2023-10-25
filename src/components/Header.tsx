@@ -16,6 +16,7 @@ import { DarkMode, LightMode } from "@mui/icons-material";
 
 const headerLinks = [
   { name: "About", href: "#about" },
+  { name: "Blog", href: "#blog" },
   { name: "Contact", href: "#contact" },
   { name: "Skills", href: "#skills" },
   { name: "Timeline", href: "#timeline" },
