@@ -156,3 +156,15 @@
   - Chakra UI
   - GraphQL
   - AWS
+
+- title: ブログ
+  description: Astro 製のオレオレブログです。Contentful と連携しています。やっぱりこれもダークモード対応。
+  url: https://blog.seelog.me
+  image: ./images/works/icon.png
+  tags:
+  - Web
+  - Astro
+  - TypeScript
+  - Tailwind CSS
+  - React
+  - Contentful

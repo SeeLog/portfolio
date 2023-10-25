@@ -17,6 +17,7 @@ import Footer from "../components/Footer";
 import { darkTheme, lightTheme } from "../styles/theme";
 import ColorModeContext from "../context/ColorModeContext";
 import "animate.css";
+import Blog from "../components/Blog";
 
 const IndexPage: React.FC<PageProps> = () => {
   const [mode, setMode] = useState<"light" | "dark">("light");
@@ -66,6 +67,7 @@ const IndexPage: React.FC<PageProps> = () => {
             }}
           >
             <AboutMe />
+            <Blog />
             <Contact />
             <Skills />
             <Timeline />
