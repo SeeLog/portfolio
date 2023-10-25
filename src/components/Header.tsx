@@ -167,7 +167,7 @@ const Header: React.FC = () => {
 
           <Box>
             <Button onClick={toggle} color="inherit" aria-label="モード切替">
-              {colorMode === "light" ? <DarkMode /> : <LightMode />}
+              {colorMode === "light" ? <LightMode /> : <DarkMode />}
             </Button>
           </Box>
         </Toolbar>
